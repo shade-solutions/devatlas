@@ -1,112 +1,236 @@
-# Qwik City App ⚡️
+# DevAtlas 🚀
 
-- [Qwik Docs](https://qwik.dev/)
-- [Discord](https://qwik.dev/chat)
-- [Qwik GitHub](https://github.com/QwikDev/qwik)
-- [@QwikDev](https://twitter.com/QwikDev)
-- [Vite](https://vitejs.dev/)
+> **“Your map to mastering development.”**
+> DevAtlas is an open-source, AI-enhanced, interactive roadmap platform that helps developers navigate the ever-evolving tech landscape. From beginner to advanced, DevAtlas gives you **visualized roadmaps**, **personalized learning paths**, and a **community-driven ecosystem** to accelerate learning.
 
 ---
 
-## Project Structure
+## Table of Contents
 
-This project is using Qwik with [QwikCity](https://qwik.dev/qwikcity/overview/). QwikCity is just an extra set of tools on top of Qwik to make it easier to build a full site, including directory-based routing, layouts, and more.
+* [Why DevAtlas?](#why-devatlas)
+* [What is DevAtlas?](#what-is-devatlas)
+* [Core Features](#core-features)
+* [Roadmaps](#roadmaps)
 
-Inside your project, you'll see the following directory structure:
+  * [Role-based Roadmaps](#role-based-roadmaps)
+  * [Skill-based Roadmaps](#skill-based-roadmaps)
+  * [Project Ideas](#project-ideas)
+* [Guides & Videos](#guides--videos)
+* [Tech Stack](#tech-stack)
+* [Libraries & Tools](#libraries--tools)
+* [Getting Started](#getting-started)
+* [Contributing](#contributing)
+* [License](#license)
 
+---
+
+## Why DevAtlas?
+
+Developers often struggle with **where to start** and **what to learn next**. Existing resources like roadmap.sh provide static guidance but lack personalization, interactivity, and AI-driven suggestions.
+
+**DevAtlas solves this by:**
+
+* Visualizing learning paths interactively.
+* Offering AI-generated personalized roadmaps.
+* Supporting community contributions.
+* Gamifying learning with badges, streaks, and progress tracking.
+* Providing curated guides, articles, and video tutorials.
+
+---
+
+## What is DevAtlas?
+
+DevAtlas is a **Qwik + React Flow-based roadmap platform** designed to help learners **navigate tech careers and skills visually**. It supports:
+
+* **Role-based and skill-based roadmaps**
+* **Interactive nodes with resources**
+* **AI-assisted personalized roadmaps**
+* **Progress tracking and gamification**
+* **Community-driven contributions**
+
+It’s fast, interactive, and designed for developers, learners, and educators alike.
+
+---
+
+## Core Features
+
+1. **Interactive Roadmaps**
+
+   * Clickable nodes with videos, docs, and projects.
+   * Color-coded skill levels (Beginner → Advanced).
+
+2. **AI-Powered Personalization**
+
+   * Generate roadmap based on career goal and skill level.
+   * Suggest next learning steps dynamically.
+
+3. **Community Contributions**
+
+   * Fork and submit roadmaps.
+   * Upvote/downvote resources.
+
+4. **Progress Tracking & Gamification**
+
+   * Badges, XP, streaks.
+   * Sync progress with GitHub.
+
+5. **Guides & Videos Section**
+
+   * Curated articles and tutorials.
+   * Embed videos for hands-on learning.
+
+---
+
+## Roadmaps
+
+### Role-based Roadmaps
+
+* **Frontend**
+* **Backend**
+* **Full Stack**
+* **DevOps**
+* **Data Analyst**
+* **AI Engineer**
+* **AI & Data Scientist**
+* **Data Engineer**
+* **Android**
+* **Machine Learning**
+* **PostgreSQL**
+* **iOS**
+* **Blockchain**
+* **QA**
+* **Software Architect**
+* **Cyber Security**
+* **UX Design**
+* **Technical Writer**
+* **Game Developer**
+* **Server Side Game Developer**
+* **MLOps**
+* **Product Manager**
+* **Engineering Manager**
+* **Developer Relations**
+* **BI Analyst**
+* **Create Your Own Roadmap**
+
+### Skill-based Roadmaps
+
+* **SQL**
+* **Computer Science**
+* **React, Vue, Angular**
+* **JavaScript, TypeScript, Node.js, Python**
+* **System Design, Java, C++, Go, Rust, Kotlin**
+* **Spring Boot, ASP.NET Core, API Design, Flutter**
+* **GraphQL, React Native, Design System, Prompt Engineering**
+* **MongoDB, Redis, Linux, Kubernetes, Docker, AWS, Terraform**
+* **Data Structures & Algorithms**
+* **Git & GitHub, PHP, Cloudflare**
+* **AI Red Teaming, AI Agents, Next.js**
+* **Code Review, HTML, CSS, Swift & Swift UI**
+* **Create Your Own Roadmap**
+
+### Project Ideas
+
+* **Frontend Projects**
+* **Backend Projects**
+* **DevOps Projects**
+* **Best Practices**
+* **Backend Performance**
+* **Frontend Performance**
+* **API Security**
+* **Code Reviews**
+* **AWS Projects**
+
+---
+
+## Guides & Videos
+
+### Guides
+
+* Top 37 REST API Interview Questions (and Answers)
+* Top 20 Python Interview Questions and Answers
+* Is Python Hard to Learn? Our Experts Say…
+* What Does a Data Analyst Do?
+* Go vs Rust Compared: Which is Right for You?
+* Python vs JavaScript: The Ultimate Guide for 2025
+* Top 80 JavaScript Coding Interview Questions and Answers
+* Top 100 Node.js Interview Questions and Answers
+* Top 100 Java Interview Questions: Ace Your Interview
+* Data Analyst vs Business Analyst Roles: How to Choose
+* How Long Does It Take to Learn JS? A Career Seeker's Guide
+* Is JavaScript Hard to Learn? Advice from a Pro
+* Top 30 SQL Interview Questions and Answers
+* 30 SQL Queries Interview Questions and Answers
+
+### Videos
+
+* The Ultimate Frontend Developer Roadmap (10 min)
+* Session Based Authentication (2 min)
+* Basic Authentication (5 min)
+* Basics of Authentication (5 min)
+* Graph Data Structure (13 min)
+* Heap Data Structure (11 min)
+* Tree Data Structure (8 min)
+
+> More guides and videos will be added continuously by the DevAtlas community.
+
+---
+
+## Tech Stack
+
+**Frontend:** Qwik, React Flow, TailwindCSS, Framer Motion, ShadCN UI
+**Backend:** Node.js / FastAPI, PostgreSQL, Redis
+**AI/Personalization:** OpenAI, Pinecone / Supabase Vector
+**Hosting:** Vercel (frontend), Railway/Fly.io (backend)
+**Authentication:** Clerk / Auth.js
+**Optional:** Three.js / React Three Fiber for 3D roadmap visualizations
+
+---
+
+## Libraries & Tools
+
+* **Animation:** Framer Motion, GSAP, Lottie
+* **Visualization:** React Flow, D3.js, vis-network
+* **State Management:** Zustand, Jotai
+* **Collaboration:** Liveblocks, Supabase Realtime, Firebase
+* **Markdown/Docs:** MDX, React Syntax Highlighter
+* **Gamification:** Progressbar.js, React Confetti, React Spring
+* **Media Embeds:** ReactPlayer, Vime.js
+
+---
+
+## Getting Started
+
+```bash
+# Clone the repo
+git clone https://github.com/shade-solutions/devatlas.git
+cd devatlas
+
+# Install dependencies
+npm install
+
+# Start frontend (Qwik)
+npm run dev
+
+# Start backend
+npm run start:backend
 ```
-├── public/
-│   └── ...
-└── src/
-    ├── components/
-    │   └── ...
-    └── routes/
-        └── ...
-```
 
-- `src/routes`: Provides the directory-based routing, which can include a hierarchy of `layout.tsx` layout files, and an `index.tsx` file as the page. Additionally, `index.ts` files are endpoints. Please see the [routing docs](https://qwik.dev/qwikcity/routing/overview/) for more info.
+Visit `http://localhost:5173` to view your local DevAtlas instance.
 
-- `src/components`: Recommended directory for components.
+---
 
-- `public`: Any static assets, like images, can be placed in the public directory. Please see the [Vite public directory](https://vitejs.dev/guide/assets.html#the-public-directory) for more info.
+## Contributing
 
-## Add Integrations and deployment
+1. Fork the repo.
+2. Create a branch: `git checkout -b feature/your-feature`
+3. Commit changes: `git commit -m "Add your feature"`
+4. Push: `git push origin feature/your-feature`
+5. Open a Pull Request.
 
-Use the `bun qwik add` command to add additional integrations. Some examples of integrations includes: Cloudflare, Netlify or Express Server, and the [Static Site Generator (SSG)](https://qwik.dev/qwikcity/guides/static-site-generation/).
+We welcome contributions to **roadmaps, guides, videos, and features**!
 
-```shell
-bun qwik add # or `bun qwik add`
-```
+---
 
-## Development
+## License
 
-Development mode uses [Vite's development server](https://vitejs.dev/). The `dev` command will server-side render (SSR) the output during development.
-
-```shell
-npm start # or `bun start`
-```
-
-> Note: during dev mode, Vite may request a significant number of `.js` files. This does not represent a Qwik production build.
-
-## Preview
-
-The preview command will create a production build of the client modules, a production build of `src/entry.preview.tsx`, and run a local server. The preview server is only for convenience to preview a production build locally and should not be used as a production server.
-
-```shell
-bun preview # or `bun preview`
-```
-
-## Production
-
-The production build will generate client and server modules by running both client and server build commands. The build command will use Typescript to run a type check on the source code.
-
-```shell
-bun build # or `bun build`
-```
-
-## Cloudflare Pages
-
-Cloudflare's [wrangler](https://github.com/cloudflare/wrangler) CLI can be used to preview a production build locally. To start a local server, run:
-
-```
-bun serve
-```
-
-Then visit [http://localhost:8787/](http://localhost:8787/)
-
-### Deployments
-
-[Cloudflare Pages](https://pages.cloudflare.com/) are deployable through their [Git provider integrations](https://developers.cloudflare.com/pages/platform/git-integration/).
-
-If you don't already have an account, then [create a Cloudflare account here](https://dash.cloudflare.com/sign-up/pages). Next go to your dashboard and follow the [Cloudflare Pages deployment guide](https://developers.cloudflare.com/pages/framework-guides/deploy-anything/).
-
-Within the projects "Settings" for "Build and deployments", the "Build command" should be `bun build`, and the "Build output directory" should be set to `dist`.
-
-### Function Invocation Routes
-
-Cloudflare Page's [function-invocation-routes config](https://developers.cloudflare.com/pages/platform/functions/routing/#functions-invocation-routes) can be used to include, or exclude, certain paths to be used by the worker functions. Having a `_routes.json` file gives developers more granular control over when your Function is invoked.
-This is useful to determine if a page response should be Server-Side Rendered (SSR) or if the response should use a static-site generated (SSG) `index.html` file.
-
-By default, the Cloudflare pages adaptor _does not_ include a `public/_routes.json` config, but rather it is auto-generated from the build by the Cloudflare adaptor. An example of an auto-generate `dist/_routes.json` would be:
-
-```
-{
-  "include": [
-    "/*"
-  ],
-  "exclude": [
-    "/_headers",
-    "/_redirects",
-    "/build/*",
-    "/favicon.ico",
-    "/manifest.json",
-    "/service-worker.js",
-    "/about"
-  ],
-  "version": 1
-}
-```
-
-In the above example, it's saying _all_ pages should be SSR'd. However, the root static files such as `/favicon.ico` and any static assets in `/build/*` should be excluded from the Functions, and instead treated as a static file.
-
-In most cases the generated `dist/_routes.json` file is ideal. However, if you need more granular control over each path, you can instead provide you're own `public/_routes.json` file. When the project provides its own `public/_routes.json` file, then the Cloudflare adaptor will not auto-generate the routes config and instead use the committed one within the `public` directory.
+MIT License © 2025 DevAtlas
