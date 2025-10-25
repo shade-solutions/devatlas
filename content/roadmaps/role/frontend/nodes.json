@@ -1,0 +1,66 @@
+[
+  {
+    "id": "html-basics",
+    "title": "HTML Fundamentals",
+    "slug": "html-basics",
+    "summary": "Learn the building blocks of web pages with HTML",
+    "level": "B",
+    "status": "core",
+    "tags": ["html", "markup", "semantics"],
+    "estimatedTime": "2 weeks",
+    "resources": ["html-mdn", "html-course"],
+    "group": "fundamentals"
+  },
+  {
+    "id": "css-basics",
+    "title": "CSS Fundamentals",
+    "slug": "css-basics", 
+    "summary": "Style web pages with CSS",
+    "level": "B",
+    "status": "core",
+    "tags": ["css", "styling", "layout"],
+    "estimatedTime": "3 weeks",
+    "resources": ["css-mdn", "css-course"],
+    "group": "fundamentals",
+    "prerequisites": ["html-basics"]
+  },
+  {
+    "id": "javascript-basics",
+    "title": "JavaScript Fundamentals",
+    "slug": "javascript-basics",
+    "summary": "Learn the programming language of the web",
+    "level": "B",
+    "status": "core",
+    "tags": ["javascript", "programming", "dom"],
+    "estimatedTime": "4 weeks",
+    "resources": ["js-mdn", "js-course"],
+    "group": "fundamentals",
+    "prerequisites": ["html-basics", "css-basics"]
+  },
+  {
+    "id": "react-basics",
+    "title": "React Fundamentals",
+    "slug": "react-basics",
+    "summary": "Learn the popular JavaScript library for building UIs",
+    "level": "I",
+    "status": "core",
+    "tags": ["react", "framework", "components"],
+    "estimatedTime": "4 weeks",
+    "resources": ["react-docs", "react-course"],
+    "group": "frameworks",
+    "prerequisites": ["javascript-basics"]
+  },
+  {
+    "id": "typescript",
+    "title": "TypeScript",
+    "slug": "typescript",
+    "summary": "Add static typing to JavaScript",
+    "level": "I",
+    "status": "optional",
+    "tags": ["typescript", "types", "tooling"],
+    "estimatedTime": "2 weeks",
+    "resources": ["ts-docs"],
+    "group": "advanced",
+    "prerequisites": ["javascript-basics"]
+  }
+]

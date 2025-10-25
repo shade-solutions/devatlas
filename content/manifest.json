@@ -1,0 +1,21 @@
+{
+  "roadmaps": [
+    {
+      "id": "frontend-developer",
+      "slug": "frontend-developer",
+      "title": "Frontend Developer",
+      "type": "role",
+      "summary": "Step by step guide to becoming a modern frontend developer",
+      "tags": [
+        "frontend",
+        "web-development",
+        "javascript",
+        "react"
+      ],
+      "level": "mixed",
+      "path": "role/frontend"
+    }
+  ],
+  "generatedAt": "2025-10-25T10:45:15.795Z",
+  "version": "1.0.0"
+}

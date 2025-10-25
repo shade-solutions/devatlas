@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Roadmap Nodes Schema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "title", "level", "status"],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]+$",
+        "description": "Unique identifier for the node"
+      },
+      "title": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 100,
+        "description": "Display title of the node"
+      },
+      "slug": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]*$",
+        "description": "URL-friendly slug for deep linking"
+      },
+      "summary": {
+        "type": "string",
+        "maxLength": 500,
+        "description": "Brief description of the node"
+      },
+      "description": {
+        "type": "string",
+        "maxLength": 2000,
+        "description": "Detailed description of the node"
+      },
+      "level": {
+        "type": "string",
+        "enum": ["B", "I", "A"],
+        "description": "Difficulty level: Beginner, Intermediate, Advanced"
+      },
+      "status": {
+        "type": "string",
+        "enum": ["core", "optional", "good-to-know", "avoid"],
+        "description": "Importance status of the node"
+      },
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "uniqueItems": true,
+        "description": "Tags for categorizing the node"
+      },
+      "estimatedTime": {
+        "type": "string",
+        "pattern": "^[0-9]+\\s+(hours?|days?|weeks?)$",
+        "description": "Estimated time to learn this topic"
+      },
+      "resources": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "uniqueItems": true,
+        "description": "Reference IDs to resources"
+      },
+      "icon": {
+        "type": "string",
+        "description": "Icon name or URL for the node"
+      },
+      "group": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]*$",
+        "description": "Group/category this node belongs to"
+      },
+      "notes": {
+        "type": "string",
+        "maxLength": 1000,
+        "description": "Additional notes or context"
+      },
+      "deprecated": {
+        "type": "boolean",
+        "default": false,
+        "description": "Whether this node is deprecated"
+      },
+      "prerequisites": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "uniqueItems": true,
+        "description": "Node IDs that are prerequisites for this node"
+      }
+    }
+  }
+}

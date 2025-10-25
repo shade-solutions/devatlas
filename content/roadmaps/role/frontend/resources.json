@@ -1,0 +1,110 @@
+[
+  {
+    "id": "html-mdn",
+    "title": "HTML Documentation - MDN",
+    "type": "documentation",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/HTML",
+    "description": "Complete HTML reference and tutorials from Mozilla Developer Network",
+    "author": "Mozilla",
+    "tags": ["html", "reference"],
+    "difficulty": "beginner",
+    "duration": "2 hours",
+    "cost": "free"
+  },
+  {
+    "id": "html-course",
+    "title": "HTML Crash Course",
+    "type": "video",
+    "url": "https://www.youtube.com/watch?v=UB1O30fR-EE",
+    "description": "Complete HTML crash course for beginners",
+    "author": "Traversy Media",
+    "tags": ["html", "tutorial"],
+    "difficulty": "beginner",
+    "duration": "2 hours",
+    "cost": "free"
+  },
+  {
+    "id": "css-mdn",
+    "title": "CSS Documentation - MDN",
+    "type": "documentation",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/CSS",
+    "description": "Complete CSS reference and tutorials",
+    "author": "Mozilla",
+    "tags": ["css", "reference"],
+    "difficulty": "beginner",
+    "duration": "3 hours",
+    "cost": "free"
+  },
+  {
+    "id": "css-course",
+    "title": "CSS Complete Course",
+    "type": "course",
+    "url": "https://www.freecodecamp.org/learn/responsive-web-design/",
+    "description": "Free comprehensive CSS course",
+    "author": "freeCodeCamp",
+    "tags": ["css", "course"],
+    "difficulty": "beginner",
+    "duration": "10 hours",
+    "cost": "free"
+  },
+  {
+    "id": "js-mdn",
+    "title": "JavaScript Documentation - MDN",
+    "type": "documentation",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    "description": "Complete JavaScript reference and guide",
+    "author": "Mozilla",
+    "tags": ["javascript", "reference"],
+    "difficulty": "beginner",
+    "duration": "5 hours",
+    "cost": "free"
+  },
+  {
+    "id": "js-course",
+    "title": "JavaScript The Complete Guide",
+    "type": "course",
+    "url": "https://www.udemy.com/course/javascript-the-complete-guide-2020-beginner-advanced/",
+    "description": "Comprehensive JavaScript course",
+    "author": "Academind",
+    "tags": ["javascript", "course"],
+    "difficulty": "beginner",
+    "duration": "40 hours",
+    "cost": "paid"
+  },
+  {
+    "id": "react-docs",
+    "title": "React Official Documentation",
+    "type": "documentation",
+    "url": "https://react.dev/",
+    "description": "Official React documentation and tutorials",
+    "author": "Meta",
+    "tags": ["react", "documentation"],
+    "difficulty": "intermediate",
+    "duration": "5 hours",
+    "cost": "free"
+  },
+  {
+    "id": "react-course",
+    "title": "React Complete Guide",
+    "type": "course",
+    "url": "https://www.udemy.com/course/react-the-complete-guide-incl-redux/",
+    "description": "Complete React course with hooks and Redux",
+    "author": "Academind",
+    "tags": ["react", "course"],
+    "difficulty": "intermediate",
+    "duration": "40 hours",
+    "cost": "paid"
+  },
+  {
+    "id": "ts-docs",
+    "title": "TypeScript Documentation",
+    "type": "documentation",
+    "url": "https://www.typescriptlang.org/docs/",
+    "description": "Official TypeScript documentation",
+    "author": "Microsoft",
+    "tags": ["typescript", "documentation"],
+    "difficulty": "intermediate",
+    "duration": "4 hours",
+    "cost": "free"
+  }
+]

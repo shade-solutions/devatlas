@@ -1,0 +1,32 @@
+{
+  "id": "frontend-developer",
+  "slug": "frontend-developer",
+  "title": "Frontend Developer",
+  "type": "role",
+  "summary": "Step by step guide to becoming a modern frontend developer",
+  "description": "This roadmap outlines the key skills and technologies needed to become a proficient frontend developer in 2024. It covers the fundamentals of web development, modern frameworks, and best practices.",
+  "tags": ["frontend", "web-development", "javascript", "react"],
+  "level": "mixed",
+  "estimatedDuration": "6 months",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "DevAtlas Community",
+      "github": "devatlas"
+    }
+  ],
+  "changelog": [
+    {
+      "version": "1.0.0",
+      "date": "2024-01-01",
+      "changes": [
+        "Initial frontend developer roadmap",
+        "Added core web technologies",
+        "Included modern framework paths"
+      ]
+    }
+  ],
+  "seo": {
+    "keywords": ["frontend development", "web developer roadmap", "javascript", "react", "html", "css"]
+  }
+}

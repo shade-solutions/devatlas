@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Roadmap Layout Schema",
+  "type": "object",
+  "properties": {
+    "algorithm": {
+      "type": "string",
+      "enum": ["dagre", "elk", "manual"],
+      "default": "dagre",
+      "description": "Layout algorithm used"
+    },
+    "direction": {
+      "type": "string",
+      "enum": ["TB", "BT", "LR", "RL"],
+      "default": "TB",
+      "description": "Direction of the layout (Top-Bottom, Bottom-Top, Left-Right, Right-Left)"
+    },
+    "breakpoints": {
+      "type": "object",
+      "properties": {
+        "mobile": {
+          "$ref": "#/definitions/viewport"
+        },
+        "tablet": {
+          "$ref": "#/definitions/viewport"
+        },
+        "desktop": {
+          "$ref": "#/definitions/viewport"
+        }
+      },
+      "description": "Layout positions for different viewport sizes"
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "nodes"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "nodes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9-]+$"
+            }
+          },
+          "color": {
+            "type": "string",
+            "pattern": "^#[a-fA-F0-9]{6}$"
+          },
+          "collapsed": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
+      "description": "Visual groupings of nodes"
+    }
+  },
+  "definitions": {
+    "viewport": {
+      "type": "object",
+      "properties": {
+        "nodes": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-z0-9-]+$": {
+              "type": "object",
+              "required": ["x", "y"],
+              "properties": {
+                "x": {
+                  "type": "number"
+                },
+                "y": {
+                  "type": "number"
+                },
+                "width": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "height": {
+                  "type": "number",
+                  "minimum": 0
+                }
+              }
+            }
+          }
+        },
+        "groups": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-z0-9-]+$": {
+              "type": "object",
+              "required": ["x", "y", "width", "height"],
+              "properties": {
+                "x": {
+                  "type": "number"
+                },
+                "y": {
+                  "type": "number"
+                },
+                "width": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "height": {
+                  "type": "number",
+                  "minimum": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

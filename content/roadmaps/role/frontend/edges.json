@@ -1,0 +1,26 @@
+[
+  {
+    "id": "html-to-css",
+    "from": "html-basics",
+    "to": "css-basics",
+    "type": "requires"
+  },
+  {
+    "id": "css-to-js",
+    "from": "css-basics",
+    "to": "javascript-basics",
+    "type": "requires"
+  },
+  {
+    "id": "js-to-react",
+    "from": "javascript-basics",
+    "to": "react-basics",
+    "type": "requires"
+  },
+  {
+    "id": "js-to-typescript",
+    "from": "javascript-basics",
+    "to": "typescript",
+    "type": "optional"
+  }
+]

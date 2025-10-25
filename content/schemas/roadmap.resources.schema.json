@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Roadmap Resources Schema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "title", "type", "url"],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]+$",
+        "description": "Unique identifier for the resource"
+      },
+      "title": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200,
+        "description": "Display title of the resource"
+      },
+      "type": {
+        "type": "string",
+        "enum": ["article", "video", "documentation", "book", "course", "project", "tool", "practice"],
+        "description": "Type of resource"
+      },
+      "url": {
+        "type": "string",
+        "format": "uri",
+        "description": "URL to the resource"
+      },
+      "description": {
+        "type": "string",
+        "maxLength": 500,
+        "description": "Brief description of the resource"
+      },
+      "author": {
+        "type": "string",
+        "maxLength": 100,
+        "description": "Author or creator of the resource"
+      },
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "uniqueItems": true,
+        "description": "Tags for categorizing the resource"
+      },
+      "difficulty": {
+        "type": "string",
+        "enum": ["beginner", "intermediate", "advanced"],
+        "description": "Difficulty level of the resource"
+      },
+      "duration": {
+        "type": "string",
+        "pattern": "^[0-9]+\\s+(minutes?|hours?|days?)$",
+        "description": "Estimated time to consume the resource"
+      },
+      "language": {
+        "type": "string",
+        "pattern": "^[a-z]{2}$",
+        "default": "en",
+        "description": "Language code (ISO 639-1)"
+      },
+      "cost": {
+        "type": "string",
+        "enum": ["free", "paid", "freemium"],
+        "default": "free",
+        "description": "Cost type of the resource"
+      },
+      "rating": {
+        "type": "number",
+        "minimum": 1,
+        "maximum": 5,
+        "description": "Community rating (1-5 stars)"
+      },
+      "votes": {
+        "type": "integer",
+        "minimum": 0,
+        "default": 0,
+        "description": "Number of community votes"
+      },
+      "deprecated": {
+        "type": "boolean",
+        "default": false,
+        "description": "Whether this resource is deprecated"
+      },
+      "lastUpdated": {
+        "type": "string",
+        "format": "date",
+        "description": "Last time the resource was updated"
+      }
+    }
+  }
+}
