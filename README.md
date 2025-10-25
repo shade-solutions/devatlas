@@ -1,5 +1,11 @@
 # DevAtlas 🚀
 
+
+- https://devatlas.strivio.world/
+
+[![Visitors](https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fgithub.com%2Fshade-solutions%2Fdevatlas&countColor=%23263759&style=flat-square&labelStyle=upper)](https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2Fshade-solutions%2Fdevatlas)
+
+
 > **“Your map to mastering development.”**
 > DevAtlas is an open-source, AI-enhanced, interactive roadmap platform that helps developers navigate the ever-evolving tech landscape. From beginner to advanced, DevAtlas gives you **visualized roadmaps**, **personalized learning paths**, and a **community-driven ecosystem** to accelerate learning.
 
