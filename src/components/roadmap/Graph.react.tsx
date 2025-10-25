@@ -1,8 +1,11 @@
+/** @jsxImportSource react */
 import React, { useCallback, useMemo } from 'react';
 import ReactFlow, {
   MiniMap,
   Controls,
   Background,
+  Handle,
+  Position,
   useNodesState,
   useEdgesState,
   addEdge,
@@ -12,7 +15,6 @@ import ReactFlow, {
   type NodeTypes,
   type EdgeTypes,
   BackgroundVariant,
-  Position,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 
@@ -52,14 +54,14 @@ interface GraphProps {
 }
 
 // Custom Node Component
-const RoadmapNodeComponent: React.FC<{
+const RoadmapNodeComponent = ({ data }: {
   data: {
     node: RoadmapNode;
     isSelected: boolean;
     onSelect: (nodeId: string) => void;
     onToggleProgress: (nodeId: string) => void;
   };
-}> = ({ data }) => {
+}) => {
   const { node, isSelected, onSelect, onToggleProgress } = data;
 
   const getStatusColor = (status: string) => {
@@ -83,17 +85,18 @@ const RoadmapNodeComponent: React.FC<{
   };
 
   return (
-    <div className={`
-      relative min-w-[160px] max-w-[200px] p-3 rounded-lg border-2 shadow-sm cursor-pointer transition-all
+    <div 
+      className={`
+      relative min-w-40 max-w-[200px] p-3 rounded-lg border-2 shadow-sm cursor-pointer transition-all
       ${getStatusColor(node.status)}
       ${isSelected ? 'ring-4 ring-blue-300 shadow-lg' : 'hover:shadow-md'}
       text-white
     `}
-    onClick={() => onSelect(node.id)}
-    onDoubleClick={(e) => {
-      e.stopPropagation();
-      onToggleProgress(node.id);
-    }}
+      onClick={() => onSelect(node.id)}
+      onDoubleClick={(e: React.MouseEvent) => {
+        e.stopPropagation();
+        onToggleProgress(node.id);
+      }}
     >
       <div className={getLevelBadge(node.level)}>
         {node.level}
@@ -115,16 +118,30 @@ const RoadmapNodeComponent: React.FC<{
       </div>
 
       {/* Connection handles */}
-      <div className="react-flow__handle react-flow__handle-top" style={{ background: 'transparent' }} />
-      <div className="react-flow__handle react-flow__handle-bottom" style={{ background: 'transparent' }} />
-      <div className="react-flow__handle react-flow__handle-left" style={{ background: 'transparent' }} />
-      <div className="react-flow__handle react-flow__handle-right" style={{ background: 'transparent' }} />
+      <Handle type="target" position={Position.Top} style={{ background: '#fff', border: '2px solid currentColor' }} />
+      <Handle type="source" position={Position.Bottom} style={{ background: '#fff', border: '2px solid currentColor' }} />
+      <Handle type="target" position={Position.Left} style={{ background: '#fff', border: '2px solid currentColor' }} />
+      <Handle type="source" position={Position.Right} style={{ background: '#fff', border: '2px solid currentColor' }} />
     </div>
   );
 };
 
 // Custom Edge Component
-const RoadmapEdgeComponent: React.FC<any> = ({ id, sourceX, sourceY, targetX, targetY, data }) => {
+const RoadmapEdgeComponent = ({ 
+  id, 
+  sourceX, 
+  sourceY, 
+  targetX, 
+  targetY, 
+  data 
+}: {
+  id: string;
+  sourceX: number;
+  sourceY: number;
+  targetX: number;
+  targetY: number;
+  data?: { type?: string; label?: string };
+}) => {
   const edgePath = `M${sourceX},${sourceY} L${targetX},${targetY}`;
   
   const getEdgeStyle = (type: string) => {
@@ -142,8 +159,7 @@ const RoadmapEdgeComponent: React.FC<any> = ({ id, sourceX, sourceY, targetX, ta
         id={id}
         d={edgePath}
         fill="none"
-        className="react-flow__edge-path"
-        {...getEdgeStyle(data?.type || 'requires')}
+        style={getEdgeStyle(data?.type || 'requires')}
       />
       {/* Arrow marker */}
       <polygon
@@ -168,14 +184,31 @@ export default function RoadmapGraph({
   edges: roadmapEdges,
   layout,
   selectedNodeId,
-  onNodeSelect = () => {},
-  onToggleProgress = () => {},
+  onNodeSelect,
+  onToggleProgress,
   filters = {},
 }: GraphProps) {
+  // Safe callbacks with fallbacks
+  const safeOnNodeSelect = useCallback((nodeId: string) => {
+    if (typeof onNodeSelect === 'function') {
+      onNodeSelect(nodeId);
+    }
+  }, [onNodeSelect]);
+
+  const safeOnToggleProgress = useCallback((nodeId: string) => {
+    if (typeof onToggleProgress === 'function') {
+      onToggleProgress(nodeId);
+    }
+  }, [onToggleProgress]);
+
   // Convert roadmap data to React Flow format
   const initialNodes: Node[] = useMemo(() => {
+    if (!roadmapNodes || !Array.isArray(roadmapNodes)) {
+      return [];
+    }
+    
     return roadmapNodes.map((node) => {
-      const position = layout?.breakpoints?.desktop?.nodes?.[node.id] || { x: 0, y: 0 };
+      const position = layout?.breakpoints?.desktop?.nodes?.[node.id] || { x: Math.random() * 500, y: Math.random() * 500 };
       
       return {
         id: node.id,
@@ -184,16 +217,20 @@ export default function RoadmapGraph({
         data: {
           node,
           isSelected: selectedNodeId === node.id,
-          onSelect: onNodeSelect,
-          onToggleProgress,
+          onSelect: safeOnNodeSelect,
+          onToggleProgress: safeOnToggleProgress,
         },
         draggable: true,
         selectable: true,
       };
     });
-  }, [roadmapNodes, layout, selectedNodeId, onNodeSelect, onToggleProgress]);
+  }, [roadmapNodes, layout, selectedNodeId, safeOnNodeSelect, safeOnToggleProgress]);
 
   const initialEdges: Edge[] = useMemo(() => {
+    if (!roadmapEdges || !Array.isArray(roadmapEdges)) {
+      return [];
+    }
+    
     return roadmapEdges.map((edge) => ({
       id: edge.id,
       source: edge.from,
@@ -249,8 +286,23 @@ export default function RoadmapGraph({
     });
   }, [nodes, filters]);
 
+  // Safety check
+  if (!nodes || nodes.length === 0) {
+    return (
+      <div className="w-full h-full flex items-center justify-center bg-gray-50">
+        <div className="text-center p-8">
+          <svg className="w-16 h-16 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">No roadmap data</h3>
+          <p className="text-gray-600">Unable to load the roadmap graph.</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full bg-white">
       <ReactFlow
         nodes={filteredNodes}
         edges={edges}
@@ -268,6 +320,7 @@ export default function RoadmapGraph({
         maxZoom={2}
         defaultViewport={{ x: 0, y: 0, zoom: 0.8 }}
         attributionPosition="bottom-left"
+        proOptions={{ hideAttribution: true }}
       >
         <Controls 
           position="top-left"

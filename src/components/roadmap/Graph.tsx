@@ -1,10 +1,11 @@
-import { component$, type QwikIntrinsicElements } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import { qwikify$ } from "@builder.io/qwik-react";
 import RoadmapGraphReact from "./Graph.react";
 
-// Qwikify the React component with lazy loading
+// Qwikify the React component with client-only eagerness
+// This tells Qwik to load the component on the client and handle callbacks properly
 export const RoadmapGraph = qwikify$(RoadmapGraphReact, {
-  eagerness: "idle", // Load on idle for better performance
+  eagerness: "visible", // Load when component becomes visible
 });
 
 // Props interface for the Qwik wrapper
@@ -29,8 +30,8 @@ export interface RoadmapGraphProps {
   }>;
   layout?: any;
   selectedNodeId?: string;
-  onNodeSelect?: (nodeId: string) => void;
-  onToggleProgress?: (nodeId: string) => void;
+  onNodeSelect$?: (nodeId: string) => void;
+  onToggleProgress$?: (nodeId: string) => void;
   filters?: {
     showOptional?: boolean;
     showDone?: boolean;
