@@ -3,7 +3,7 @@ import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
 import type { Manifest } from "../../utils/content";
 import { loadManifest, getRoadmapsByType } from "../../utils/content";
 
-export const useManifestLoader = routeLoader$<Manifest | null>(() => {
+export const useManifestLoader = routeLoader$<Manifest | null>(async () => {
   return loadManifest();
 });
 

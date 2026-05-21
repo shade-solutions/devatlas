@@ -1,11 +1,11 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useSignal, useTask$ } from "@builder.io/qwik";
 import { qwikify$ } from "@builder.io/qwik-react";
 import RoadmapGraphReact from "./Graph.react";
 
-// Qwikify the React component with client-only eagerness
-// This tells Qwik to load the component on the client and handle callbacks properly
+// Qwikify the React component with client-only rendering
+// This prevents SSR issues with React Flow internal state
 export const RoadmapGraph = qwikify$(RoadmapGraphReact, {
-  eagerness: "visible", // Load when component becomes visible
+  eagerness: "load", // Load only after hydration
 });
 
 // Props interface for the Qwik wrapper
@@ -117,15 +117,27 @@ export const RoadmapGraphFallback = component$<RoadmapGraphProps>(({ nodes, edge
 });
 
 export default component$<RoadmapGraphProps>((props) => {
+  const renderInteractive = useSignal(false);
+
+  useTask$(() => {
+    if (import.meta.env.SSR) {
+      return;
+    }
+
+    renderInteractive.value = true;
+  });
+
   return (
     <div class="relative w-full h-full">
-      {/* React Flow Graph - only loads when needed */}
-      <RoadmapGraph {...props} />
+      {/* During SSR and before hydration, show the fallback */}
+      {!renderInteractive.value && <RoadmapGraphFallback {...props} />}
       
-      {/* Fallback is automatically shown by Qwik during SSR and before hydration */}
-      <noscript>
-        <RoadmapGraphFallback {...props} />
-      </noscript>
+      {/* After hydration, show the interactive React Flow component */}
+      {renderInteractive.value && (
+        <div class="absolute inset-0">
+          <RoadmapGraph {...props} />
+        </div>
+      )}
     </div>
   );
 });

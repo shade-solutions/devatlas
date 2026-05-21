@@ -3,7 +3,7 @@ import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
 import { loadRoadmap, getNodeById, type CompiledRoadmap } from "../../../utils/content";
 import RoadmapGraph from "../../../components/roadmap/Graph";
 
-export const useRoadmapLoader = routeLoader$<CompiledRoadmap | null>(({ params }) => {
+export const useRoadmapLoader = routeLoader$<CompiledRoadmap | null>(async ({ params }) => {
   return loadRoadmap(params.slug);
 });
 

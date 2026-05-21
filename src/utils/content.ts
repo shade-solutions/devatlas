@@ -1,6 +1,3 @@
-import { readFileSync } from 'fs';
-import { join } from 'path';
-
 export interface RoadmapMeta {
   id: string;
   slug: string;
@@ -111,17 +108,16 @@ export interface Manifest {
 /**
  * Load and parse the roadmaps manifest
  */
-export function loadManifest(): Manifest | null {
+export async function loadManifest(): Promise<Manifest | null> {
   try {
     if (typeof window !== 'undefined') {
-      // Client-side: fetch from API or static file
-      return null; // Will be loaded via route loader
-    } else {
-      // Server-side: read from file system
-      const manifestPath = join(process.cwd(), 'content/manifest.json');
-      const content = readFileSync(manifestPath, 'utf-8');
-      return JSON.parse(content);
+      return null;
     }
+
+    const { readFile } = await import('node:fs/promises');
+    const manifestPath = `${process.cwd()}/content/manifest.json`;
+    const content = await readFile(manifestPath, 'utf-8');
+    return JSON.parse(content);
   } catch (error) {
     console.error('Failed to load manifest:', error);
     return null;
@@ -131,23 +127,22 @@ export function loadManifest(): Manifest | null {
 /**
  * Load a compiled roadmap by slug
  */
-export function loadRoadmap(slug: string): CompiledRoadmap | null {
+export async function loadRoadmap(slug: string): Promise<CompiledRoadmap | null> {
   try {
     if (typeof window !== 'undefined') {
-      // Client-side: this should be called via route loader
       return null;
-    } else {
-      // Server-side: find and load the roadmap
-      const manifest = loadManifest();
-      if (!manifest) return null;
-
-      const roadmapEntry = manifest.roadmaps.find(r => r.slug === slug);
-      if (!roadmapEntry) return null;
-
-      const roadmapPath = join(process.cwd(), 'content/roadmaps', roadmapEntry.path, 'roadmap.compiled.json');
-      const content = readFileSync(roadmapPath, 'utf-8');
-      return JSON.parse(content);
     }
+
+    const manifest = await loadManifest();
+    if (!manifest) return null;
+
+    const roadmapEntry = manifest.roadmaps.find(r => r.slug === slug);
+    if (!roadmapEntry) return null;
+
+    const { readFile } = await import('node:fs/promises');
+    const roadmapPath = `${process.cwd()}/content/roadmaps/${roadmapEntry.path}/roadmap.compiled.json`;
+    const content = await readFile(roadmapPath, 'utf-8');
+    return JSON.parse(content);
   } catch (error) {
     console.error(`Failed to load roadmap ${slug}:`, error);
     return null;
